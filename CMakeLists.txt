@@ -44,8 +44,12 @@ add_library(libflang ${libkind} lib/Libflang.cpp
   lib/System/System.cpp
 )
 
-# Tests
+install(TARGETS libflang
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib)
 
+# Tests
 macro(add_libflang_test name)
   add_executable( ${name} ${ARGN} )
   target_link_libraries( ${name} libflang )
